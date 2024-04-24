@@ -1,62 +1,33 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-from statsmodels.tsa.seasonal import seasonal_decompose
 
 # Load the solar radiation measurement data
-data = pd.read_csv("cleaned_sierraleon_dataset.csv")
+data = pd.read_csv("Data/cleaned_sierraleon_dataset.csv")
 
-
+# Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
 st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different statistical analysis methodologies and visualize data insights.")
 
-# sidebar for user inputs
+# Add a sidebar for user inputs
 st.sidebar.header("Customization Options")
-selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series Analysis", "Correlation Analysis", "Regression Analysis"])
+selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series Analysis", "Correlation Analysis",  "Regression Analysis"])
 
+# Perform statistical analysis based on the selected methodology
 if selected_methodology == "Time-Series Analysis":
     # Perform time-series analysis
     st.header("Time-Series Analysis")
-    # Seasonal Decomposition
-    st.subheader("Seasonal Decomposition")
-    decomposition = seasonal_decompose(data["GHI"], model='additive', period=30)
-    trend = decomposition.trend
-    seasonal = decomposition.seasonal
-    residual = decomposition.resid
-
-    # Ploting
-    st.subheader("Original")
-    st.line_chart(data["GHI"])
-
-    st.subheader("Trend")
-    st.line_chart(trend)
-
-    st.subheader("Seasonal")
-    st.line_chart(seasonal)
-
-    st.subheader("Residual")
-    st.line_chart(residual)
-
-    """ # Autocorrelation Analysis
-    st.subheader("Autocorrelation Analysis")
-    autocorrelation = data["GHI"].autocorr()
-    st.write("Autocorrelation of GHI:", autocorrelation) """
-
-
-
+    # Add code here for time-series analysis
 
 elif selected_methodology == "Correlation Analysis":
     # Perform correlation analysis
     st.header("Correlation Analysis")
-    
-   
+    # Add code here for correlation analysis   
 
 elif selected_methodology == "Regression Analysis":
     # Perform regression analysis
     st.header("Regression Analysis")
-    # Add code here for regression analysis
-
-
+   
 
 # Visualize data insights
 st.header("Data Insights")
@@ -77,9 +48,9 @@ plt.ylabel("Ambient Temperature (°C)")
 plt.title("GHI vs. Ambient Temperature")
 st.pyplot(plt)
 
+# Add more visualizations and data insights based on the selected methodology
 
-
-# Display the cleaned data table
+# Dcleaned data table
 st.subheader("Solar Radiation Measurement Data")
 st.dataframe(data)
 
