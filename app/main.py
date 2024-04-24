@@ -61,7 +61,7 @@ elif selected_methodology == "Regression Analysis":
 # Visualize data insights
 st.header("Data Insights")
 
-# Example: Time-series plot of GHI
+# Time-series plot of GHI
 st.subheader("Time-Series Plot of Global Horizontal Irradiance (GHI)")
 plt.plot(data["Timestamp"], data["GHI"])
 plt.xlabel("Timestamp")
@@ -69,7 +69,7 @@ plt.ylabel("GHI (W/m²)")
 plt.title("Global Horizontal Irradiance (GHI) Over Time")
 st.pyplot(plt)
 
-# Example: Scatter plot of GHI vs. Ambient Temperature
+# Scatter plot of GHI vs. Ambient Temperature
 st.subheader("Scatter Plot of GHI vs. Ambient Temperature")
 plt.scatter(data["GHI"], data["Tamb"])
 plt.xlabel("GHI (W/m²)")
