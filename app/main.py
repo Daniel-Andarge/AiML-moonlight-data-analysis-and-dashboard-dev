@@ -2,14 +2,24 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load the solar radiation measurement data
-data = pd.read_csv("cleaned_sierraleon_dataset.csv")
-
 # Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
 st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different statistical analysis methodologies and visualize data insights.")
 
 # Add a sidebar for user inputs
+st.sidebar.header("Data Upload")
+uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
+
+# Load the solar radiation measurement data
+if uploaded_file is not None:
+    data = pd.read_csv(uploaded_file)
+else:
+    data = pd.read_csv("cleaned_sierraleon_dataset.csv")
+
+# Add a separator in the sidebar
+st.sidebar.markdown("---")
+
+# Customization Options
 st.sidebar.header("Customization Options")
 selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series Analysis", "Correlation Analysis",  "Regression Analysis"])
 
@@ -27,7 +37,7 @@ elif selected_methodology == "Correlation Analysis":
 elif selected_methodology == "Regression Analysis":
     # Perform regression analysis
     st.header("Regression Analysis")
-   
+    # Add code here for regression analysis
 
 # Visualize data insights
 st.header("Data Insights")
@@ -48,9 +58,8 @@ plt.ylabel("Ambient Temperature (°C)")
 plt.title("GHI vs. Ambient Temperature")
 st.pyplot(plt)
 
-# Add more visualizations and data insights based on the selected methodology
 
-# Dcleaned data table
+
+# Display the cleaned data table
 st.subheader("Solar Radiation Measurement Data")
 st.dataframe(data)
-
