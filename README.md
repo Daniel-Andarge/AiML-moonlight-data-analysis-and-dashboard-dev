@@ -80,7 +80,8 @@ Streamlit is a powerful Python library used for building interactive web applica
 To run the Streamlit dashboard locally, execute the following command in your virtual environment:
 
 ```
-streamlit run dashboard.py
+cd app
+streamlit run main.py
 ```
 
 The dashboard provides an intuitive interface to interact with the analyzed data and gain insights.
