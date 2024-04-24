@@ -87,6 +87,4 @@ The deployed version of the Streamlit dashboard can be accessed at [Deployment U
 
 ## Conclusion
 
-The MoonLight Energy Solutions project aims to provide valuable insights into solar energy data through Exploratory Data Analysis and dashboard development using Streamlit. By following the usage instructions and exploring the provided analyses, users can gain a comprehensive understanding of the dataset.
-
-For any additional information or questions, please refer to the project contributors or open an issue on the GitHub repository.
+The MoonLight Energy Solutions project aims to provide valuable insights into solar energy data through Exploratory Data Analysis and dashboard development using Streamlit.
