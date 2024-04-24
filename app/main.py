@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+from statsmodels.tsa.seasonal import seasonal_decompose
 
 # Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
@@ -20,11 +21,50 @@ st.sidebar.markdown("---")
 st.sidebar.header("Customization Options")
 selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series Analysis", "Correlation Analysis",  "Regression Analysis"])
 
-# Perform statistical analysis based on the selected methodology
+# Perform statistical analysis based on the user selected methodology
 if selected_methodology == "Time-Series Analysis":
-    # Perform time-series analysis
+    # Time-series analysis
     st.header("Time-Series Analysis")
+    # Seasonal Decomposition
+    # Seasonal Decomposition
+    st.subheader("Seasonal Decomposition")
+    decomposition = seasonal_decompose(data["GHI"], model='additive', period=30)
+    trend = decomposition.trend
+    seasonal = decomposition.seasonal
+    residual = decomposition.resid
 
+    # Plot the components
+    st.subheader("Original")
+    st.line_chart(data["GHI"])
+
+    st.subheader("Trend")
+    st.line_chart(trend)
+
+    st.subheader("Seasonal")
+    st.line_chart(seasonal)
+
+    st.subheader("Residual")
+    st.line_chart(residual)
+
+    # Autocorrelation Analysis
+    st.subheader("Autocorrelation Analysis")
+    autocorrelation = data["GHI"].autocorr()
+    st.write("Autocorrelation of GHI:", autocorrelation)
+
+    # Moving Averages
+    st.subheader("Moving Averages")
+    window_size = st.slider("Select Window Size", 5, 365, 30)
+    moving_average = data["GHI"].rolling(window=window_size).mean()
+
+    st.subheader("Original vs. Moving Average")
+    plt.figure(figsize=(10, 6))
+    plt.plot(data["Timestamp"], data["GHI"], label='Original')
+    plt.plot(data["Timestamp"], moving_average, label=f"Moving Average (Window Size {window_size})")
+    plt.xlabel("Timestamp")
+    plt.ylabel("GHI (W/m²)")
+    plt.title("Moving Averages of Global Horizontal Irradiance (GHI)")
+    plt.legend()
+    st.pyplot(plt)
 
 elif selected_methodology == "Correlation Analysis":
     # Perform correlation analysis

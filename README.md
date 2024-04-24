@@ -83,7 +83,7 @@ The dashboard provides an intuitive interface to interact with the analyzed data
 
 #### Deployment
 
-The deployed version of the Streamlit dashboard can be accessed at [Deployment URL](https://example.com).
+The deployed version of the Streamlit dashboard can be accessed at [Deployment URL](https://moonlight-fzbyzyewtzif3trwu44hbm.streamlit.app/).
 
 ## Conclusion
 
