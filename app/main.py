@@ -24,17 +24,17 @@ selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series 
 if selected_methodology == "Time-Series Analysis":
     # Perform time-series analysis
     st.header("Time-Series Analysis")
-    # Add code here for time-series analysis
+
 
 elif selected_methodology == "Correlation Analysis":
     # Perform correlation analysis
     st.header("Correlation Analysis")
-    # Add code here for correlation analysis   
+ 
 
 elif selected_methodology == "Regression Analysis":
     # Perform regression analysis
     st.header("Regression Analysis")
-    # Add code here for regression analysis
+   
 
 # Visualize data insights
 st.header("Data Insights")
