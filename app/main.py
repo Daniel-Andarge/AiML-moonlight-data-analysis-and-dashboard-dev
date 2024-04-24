@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load the solar radiation measurement data
-data = pd.read_csv("Data/cleaned_sierraleon_dataset.csv")
+data = pd.read_csv("cleaned_sierraleon_dataset.csv")
 
 # Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
