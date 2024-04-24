@@ -47,7 +47,11 @@ The development process for the MoonLight Energy Solutions project involves two 
 
 ### 2.1 Exploratory Data Analysis (EDA)
 
+###
+
 During the EDA phase, the following analyses are performed on the solar energy dataset:
+
+[Please Click Here to view the Exploratory-Data-Analysis.ipynb file](https://github.com/Daniel-Andarge/MoonLight/blob/main/Exploratory-Data-Analysis.ipynb).
 
 - Summary Statistics: Calculate descriptive statistics such as mean, median, and standard deviation for each numeric column in order to understand the data distribution.
 
@@ -85,6 +89,6 @@ The dashboard provides an intuitive interface to interact with the analyzed data
 
 The deployed version of the Streamlit dashboard can be accessed at [Deployment URL](https://moonlight-fzbyzyewtzif3trwu44hbm.streamlit.app/).
 
-## Conclusion
+# Author
 
-The MoonLight Energy Solutions project aims to provide valuable insights into solar energy data through Exploratory Data Analysis and dashboard development using Streamlit.
+This project was completed by [Daniel Andarge](https://github.com/Daniel-Andarge).
