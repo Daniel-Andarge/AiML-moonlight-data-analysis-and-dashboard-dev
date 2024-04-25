@@ -86,10 +86,27 @@ streamlit run main.py
 
 The dashboard provides an intuitive interface to interact with the analyzed data and gain insights.
 
+### Dashboard ScreenShots:
+
+**Uploaded File Contents:**
+![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-1.png)
+
+**Correlation Analysis:**
+![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-2.png)
+
+**Time Series Analysis:**
+![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-3.png)
+
+**Time Series Analysis:**
+![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-4.png)
+
+**Box Plot Analysis:**
+![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-5.png)
+
 #### Deployment
 
 The deployed version of the Streamlit dashboard can be accessed at [Deployment URL](https://moonlight-fzbyzyewtzif3trwu44hbm.streamlit.app/).
 
-# Author
+## Author
 
 This project was completed by [Daniel Andarge](https://github.com/Daniel-Andarge).
