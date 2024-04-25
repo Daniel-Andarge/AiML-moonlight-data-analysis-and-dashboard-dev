@@ -27,9 +27,7 @@ if uploaded_file is not None:
         # Read the CSV file
         data = pd.read_csv(uploaded_file)
         
-        # Display the dataframe
-        st.subheader("Uploaded file contents - Default Cleaned Serra-Lione Data")
-        st.dataframe(data)
+
         
         # Perform further data processing or analysis if needed
         
@@ -38,7 +36,9 @@ if uploaded_file is not None:
 else:
     # Use default CSV file if no file is uploaded
     data = pd.read_csv("cleaned_sierraleon_dataset.csv")  # Replace "default_data.csv" with the path to your default CSV file
-
+        # Display the dataframe
+    st.subheader("Uploaded file contents - Default Cleaned Serra-Lione Data")
+    st.dataframe(data)
     # Methodology selection
     if selected_methodology == "Time-Series Analysis":
         # Seasonal Decomposition
