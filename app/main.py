@@ -132,6 +132,3 @@ else:
         else:
             st.write("Please select numeric variables for correlation analysis.")
 
-""" # Display cleaned data table
-st.subheader("Solar Radiation Measurement Data")
-st.dataframe(data) """
