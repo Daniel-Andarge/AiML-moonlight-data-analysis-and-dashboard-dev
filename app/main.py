@@ -10,32 +10,37 @@ st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different s
 
 # Add a sidebar for user inputs
 st.sidebar.header("Data Upload")
+# Add a file uploader
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
-
-# Load the solar radiation measurement data
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
-else:
-    data = pd.read_csv("cleaned_sierraleon_dataset.csv")
 
 # Add a separator in the sidebar
 st.sidebar.markdown("---")
 
 # Customization Options
 st.sidebar.header("Customization Options")
-selected_methodology = st.sidebar.selectbox("Select Methodology", ["Correlation Analysis","Time-Series Analysis", "Box Plot Analysis" ])
+selected_methodology = st.sidebar.selectbox("Select Methodology", ["Correlation Analysis", "Time-Series Analysis", "Box Plot Analysis"])
 
 # Perform statistical analysis based on the user selected methodology
 if uploaded_file is not None:
     # Load the data into a DataFrame
-    data = pd.read_csv(uploaded_file)
-    data["Timestamp"] = pd.to_datetime(data["Timestamp"])
-    data.set_index("Timestamp", inplace=True)
-
+    try:
+        # Read the CSV file
+        data = pd.read_csv(uploaded_file)
+        
+        # Display the dataframe
+      
+        
+        # Perform further data processing or analysis if needed
+        
+    except pd.errors.ParserError:
+        st.write("Error: Invalid CSV file. Please upload a valid CSV file.")
+else:
+    # Use default CSV file if no file is uploaded
+    data = pd.read_csv("cleaned_sierraleon_dataset.csv")  # Replace "default_data.csv" with the path to your default CSV file
+    st.subheader("Uploaded file contents - Default Cleaned Serra-Lione Data")
+    st.dataframe(data)
     # Methodology selection
-    selected_methodology = st.selectbox("Select Methodology", ["Time-Series Analysis", "Other Methodology"])
-
-if selected_methodology == "Time-Series Analysis":
+    if selected_methodology == "Time-Series Analysis":
         # Seasonal Decomposition
         st.header("Seasonal Decomposition")
         period = st.selectbox("Select Period", [7, 30, 365])
@@ -71,64 +76,62 @@ if selected_methodology == "Time-Series Analysis":
         plt.legend()
         st.pyplot(plt)
 
-
-elif selected_methodology == "Box Plot Analysis":
-    # Perform correlation analysis
-    st.header("Box Plot Analysis")
-    
-
-     # Select the variables for box plot analysis
-    variables = st.multiselect("Select variables", data.columns)
-
-    if len(variables) > 0:
+    elif selected_methodology == "Box Plot Analysis":
         # Perform box plot analysis
-        boxplot_data = data[variables]
+        st.header("Box Plot Analysis")
 
-        # Display the box plots
-        fig, ax = plt.subplots()
-        sns.boxplot(data=boxplot_data, ax=ax)
-        ax.set_ylabel("Value")
-        st.pyplot(fig)
-    else:
-        st.write("Please select at least one variable.")
+        # Select the variables for box plot analysis
+        variables = st.multiselect("Select variables", data.columns)
 
-elif selected_methodology == "Correlation Analysis":
-    # Perform regression analysis
-    st.header("Correlation Analysis")
-        # Remove Timestamp from correlation variable user selection
-    # Select variables for correlation analysis
-    numeric_columns = data.select_dtypes(include=["number"]).columns
-    datetime_columns = data.select_dtypes(include=["datetime"]).columns
-    variables = numeric_columns.union(datetime_columns)
+        if len(variables) > 0:
+            # Perform box plot analysis
+            boxplot_data = data[variables]
 
-    # Set default variables
-    default_variable1 = "GHI"
-    default_variable2 = "Tamb"
+            # Display the box plots
+            fig, ax = plt.subplots()
+            sns.boxplot(data=boxplot_data, ax=ax)
+            ax.set_ylabel("Value")
+            st.pyplot(fig)
+        else:
+            st.write("Please select at least one variable.")
 
-    variable1 = st.selectbox("Select Variable 1", variables, index=variables.get_loc(default_variable1))
-    variable2 = st.selectbox("Select Variable 2", variables, index=variables.get_loc(default_variable2))
+    elif selected_methodology == "Correlation Analysis":
+        # Perform correlation analysis
+        st.header("Correlation Analysis")
+        
+       
+        # Select variables for correlation analysis
+        numeric_columns = data.select_dtypes(include=["number"]).columns
+        datetime_columns = data.select_dtypes(include=["datetime"]).columns
+        variables = numeric_columns.union(datetime_columns)
 
-    # Perform correlation analysis if both variables are numeric
-    if variable1 and variable2:
-        correlation = data[variable1].corr(data[variable2])
+        # Set default variables
+        default_variable1 = "GHI"
+        default_variable2 = "Tamb"
 
-        # Display correlation coefficient
-        st.subheader("Correlation Coefficient")
-        st.write(f"The correlation coefficient between {variable1} and {variable2} is: {correlation:.2f}")
+        variable1 = st.selectbox("Select Variable 1", variables, index=variables.get_loc(default_variable1))
+        variable2 = st.selectbox("Select Variable 2", variables, index=variables.get_loc(default_variable2))
 
-        # Create a scatter plot
-        st.subheader("Scatter Plot")
-        plt.figure(figsize=(8, 6))
-        sns.scatterplot(x=data[variable1], y=data[variable2])
-        plt.xlabel(variable1)
-        plt.ylabel(variable2)
-        plt.title("Scatter Plot")
-        plt.grid(True)
-        st.pyplot(plt)
-    else:
-        st.write("Please select numeric variables for correlation analysis.")
+        # Perform correlation analysis if both variables are numeric
+        if variable1 and variable2:
+            correlation = data[variable1].corr(data[variable2])
 
+            # Display correlation coefficient
+            st.subheader("Correlation Coefficient")
+            st.write(f"The correlation coefficient between {variable1} and {variable2} is: {correlation:.2f}")
 
-# Display cleaned data table
+            # Create a scatter plot
+            st.subheader("Scatter Plot")
+            plt.figure(figsize=(8, 6))
+            sns.scatterplot(x=data[variable1], y=data[variable2])
+            plt.xlabel(variable1)
+            plt.ylabel(variable2)
+            plt.title("Scatter Plot")
+            plt.grid(True)
+            st.pyplot(plt)
+        else:
+            st.write("Please select numeric variables for correlation analysis.")
+
+""" # Display cleaned data table
 st.subheader("Solar Radiation Measurement Data")
-st.dataframe(data)
+st.dataframe(data) """
