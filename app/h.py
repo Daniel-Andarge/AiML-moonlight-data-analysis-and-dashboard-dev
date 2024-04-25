@@ -1,67 +1,44 @@
 import streamlit as st
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Load the solar radiation measurement data
-data = pd.read_csv("solar_radiation_data.csv")
+# Set up the Streamlit app
+st.title("Correlation Analysis")
+uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
 
-# Set the page title and description
-st.title("Solar Radiation Analysis Dashboard")
-st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different statistical analysis methodologies and visualize data insights.")
+if uploaded_file is not None:
+    # Load the data into a DataFrame
+    data = pd.read_csv(uploaded_file)
 
-# Add a sidebar for user inputs
-st.sidebar.header("Customization Options")
-selected_methodology = st.sidebar.selectbox("Select Methodology", ["Time-Series Analysis", "Correlation Analysis", "Spatial Analysis", "Regression Analysis", "Time-Frequency Analysis"])
+    # Select variables for correlation analysis
+    numeric_columns = data.select_dtypes(include=["number"]).columns
+    datetime_columns = data.select_dtypes(include=["datetime"]).columns
+    variables = numeric_columns.union(datetime_columns)
 
-# Perform statistical analysis based on the selected methodology
-if selected_methodology == "Time-Series Analysis":
-    # Perform time-series analysis
-    st.header("Time-Series Analysis")
-    # Add code here for time-series analysis
+    # Set default variables
+    default_variable1 = "GHI"
+    default_variable2 = "Tamb"
 
-elif selected_methodology == "Correlation Analysis":
-    # Perform correlation analysis
-    st.header("Correlation Analysis")
-    # Add code here for correlation analysis
+    variable1 = st.selectbox("Select Variable 1", variables, index=variables.get_loc(default_variable1))
+    variable2 = st.selectbox("Select Variable 2", variables, index=variables.get_loc(default_variable2))
 
-elif selected_methodology == "Spatial Analysis":
-    # Perform spatial analysis
-    st.header("Spatial Analysis")
-    # Add code here for spatial analysis
+    # Perform correlation analysis if both variables are numeric
+    if variable1 and variable2:
+        correlation = data[variable1].corr(data[variable2])
 
-elif selected_methodology == "Regression Analysis":
-    # Perform regression analysis
-    st.header("Regression Analysis")
-    # Add code here for regression analysis
+        # Display correlation coefficient
+        st.subheader("Correlation Coefficient")
+        st.write(f"The correlation coefficient between {variable1} and {variable2} is: {correlation:.2f}")
 
-elif selected_methodology == "Time-Frequency Analysis":
-    # Perform time-frequency analysis
-    st.header("Time-Frequency Analysis")
-    # Add code here for time-frequency analysis
-
-# Visualize data insights
-st.header("Data Insights")
-
-# Example: Time-series plot of GHI
-st.subheader("Time-Series Plot of Global Horizontal Irradiance (GHI)")
-plt.plot(data["Timestamp"], data["GHI"])
-plt.xlabel("Timestamp")
-plt.ylabel("GHI (W/m²)")
-plt.title("Global Horizontal Irradiance (GHI) Over Time")
-st.pyplot(plt)
-
-# Example: Scatter plot of GHI vs. Ambient Temperature
-st.subheader("Scatter Plot of GHI vs. Ambient Temperature")
-plt.scatter(data["GHI"], data["Tamb"])
-plt.xlabel("GHI (W/m²)")
-plt.ylabel("Ambient Temperature (°C)")
-plt.title("GHI vs. Ambient Temperature")
-st.pyplot(plt)
-
-# Add more visualizations and data insights based on the selected methodology
-
-# Display the cleaned data table
-st.subheader("Solar Radiation Measurement Data")
-st.dataframe(data)
-
-# Save and run the Streamlit app
+        # Create a scatter plot
+        st.subheader("Scatter Plot")
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(x=data[variable1], y=data[variable2])
+        plt.xlabel(variable1)
+        plt.ylabel(variable2)
+        plt.title("Scatter Plot")
+        plt.grid(True)
+        st.pyplot(plt)
+    else:
+        st.write("Please select numeric variables for correlation analysis.")
