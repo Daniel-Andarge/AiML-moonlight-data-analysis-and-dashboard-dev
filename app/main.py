@@ -52,7 +52,7 @@ if selected_methodology == "Time-Series Analysis":
     st.subheader("Trend")
     st.line_chart(trend)
 
-    # Autocorrelation Analysis
+    # Auttocorrelation Analysis
     st.subheader("Autocorrelation Analysis")
     autocorrelation = data["GHI"].autocorr()
     st.write("Autocorrelation of GHI:", autocorrelation)
