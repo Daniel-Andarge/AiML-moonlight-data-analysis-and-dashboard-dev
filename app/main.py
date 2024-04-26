@@ -1,19 +1,20 @@
+import os
 import streamlit as st
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from statsmodels.tsa.seasonal import seasonal_decompose
+from utils import load_data, perform_seasonal_decomposition, perform_box_plot_analysis, perform_correlation_analysis
 
 # Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
 st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different statistical analysis methodologies and visualize data insights.")
 
-# Add a sidebar for user inputs
+# sidebar for user inputs
 st.sidebar.header("Data Upload")
-# Add a file uploader
+# file uploader
 uploaded_file = st.sidebar.file_uploader("Upload CSV file", type="csv")
 
-# Add a separator in the sidebar
+# separator in the sidebar
 st.sidebar.markdown("---")
 
 # Customization Options
@@ -23,19 +24,17 @@ selected_methodology = st.sidebar.selectbox("Select Methodology", ["Correlation 
 # Perform statistical analysis based on the user-selected methodology
 if uploaded_file is not None:
     # Load the data into a DataFrame
-    try:
-        # Read the CSV file
-        data = pd.read_csv(uploaded_file)
-        
+    data = load_data(uploaded_file)
+    if data is not None:
         st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data ")
         st.dataframe(data)
-        
-        # Perform further data processing or analysis if needed
-    except pd.errors.ParserError:
+    else:
         st.write("Error: Invalid CSV file. Please upload a valid CSV file.")
 else:
     # Use default CSV file if no file is uploaded
-    data = pd.read_csv("cleaned_sierraleon_dataset.csv")
+    data_folder = os.path.join(os.path.dirname(__file__), 'Data')
+    file_path = os.path.join(data_folder, 'cleaned_sierraleon_dataset.csv')
+    data = pd.read_csv(file_path)
     st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data")
     st.dataframe(data)
 
@@ -44,10 +43,7 @@ if selected_methodology == "Time-Series Analysis":
     # Seasonal Decomposition
     st.header("Seasonal Decomposition")
     period = st.selectbox("Select Period", [7, 30, 365])
-    decomposition = seasonal_decompose(data["GHI"], model='additive', period=period)
-    trend = decomposition.trend
-    seasonal = decomposition.seasonal
-    residual = decomposition.resid
+    trend, seasonal, residual = perform_seasonal_decomposition(data, period)
 
     # Plot the components
     st.subheader("Original")
@@ -85,20 +81,17 @@ elif selected_methodology == "Box Plot Analysis":
 
     if len(variables) > 0:
         # Perform box plot analysis
-        boxplot_data = data[variables]
+        fig = perform_box_plot_analysis(data, variables)
 
         # Display the box plots
-        fig, ax = plt.subplots()
-        sns.boxplot(data=boxplot_data, ax=ax)
-        ax.set_ylabel("Value")
         st.pyplot(fig)
     else:
-        st.write("Please select at least one variable.")
+        st.write("Please select at leastone variable for box plot analysis.")
 
 elif selected_methodology == "Correlation Analysis":
     # Perform correlation analysis
     st.header("Correlation Analysis")
-    
+
     # Select variables for correlation analysis
     numeric_columns = data.select_dtypes(include=["number"]).columns
     datetime_columns = data.select_dtypes(include=["datetime"]).columns
@@ -111,23 +104,9 @@ elif selected_methodology == "Correlation Analysis":
     variable1 = st.selectbox("Select Variable 1", variables, index=variables.get_loc(default_variable1))
     variable2 = st.selectbox("Select Variable 2", variables, index=variables.get_loc(default_variable2))
 
-    # Perform correlation analysis if both variables are numeric
-    if variable1 and variable2:
-        correlation = data[variable1].corr(data[variable2])
+    # Perform correlation analysis
+    correlation, scatter_plot = perform_correlation_analysis(data, variable1, variable2)
 
-        # Display correlation coefficient
-        st.subheader("Correlation Coefficient")
-        st.write(f"The correlation coefficient between {variable1} and {variable2} is: {correlation:.2f}")
-
-        # Create a scatter plot
-        st.subheader("Scatter Plot")
-        plt.figure(figsize=(8, 6))
-            
-        sns.scatterplot(x=data[variable1], y=data[variable2])
-        plt.xlabel(variable1)
-        plt.ylabel(variable2)
-        plt.title("Scatter Plot")
-        plt.grid(True)
-        st.pyplot(plt)
-    else:
-        st.write("Please select numeric variables for correlation analysis.")        
+    # Display the correlation coefficient and scatter plot
+    st.write("Correlation Coefficient:", correlation)
+    st.pyplot(scatter_plot)
