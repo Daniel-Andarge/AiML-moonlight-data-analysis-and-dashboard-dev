@@ -2,11 +2,6 @@
 # This file lists all the Python packages required for MoonLight Energy Solutions project.
 # Install the packages using 'pip install -r requirements.txt'
 
-# MoonLight Energy Solutions project requirements
-# This file lists all the Python packages required for MoonLight Energy Solutions project.
-# Install the packages using 'pip install -r requirements.txt'
-
-
 altair==5.3.0
 attrs==23.2.0
 blinker==1.7.0

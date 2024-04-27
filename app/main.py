@@ -5,9 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from utils import load_data, perform_seasonal_decomposition, perform_box_plot_analysis, perform_correlation_analysis
 
-# Set the page title and description
+# Set the page title 
 st.title("Solar Radiation Analysis Dashboard")
-
 
 # sidebar for user inputs
 st.sidebar.header("Data Upload")
