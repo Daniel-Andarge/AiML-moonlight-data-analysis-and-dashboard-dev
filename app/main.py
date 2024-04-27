@@ -27,13 +27,13 @@ if uploaded_file is not None:
     data = load_data(uploaded_file)
     if data is not None:
         st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data")
-        st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ")
+        st.write(f"NOTE : Showing {min(1000, len(data))} rows out of {len(data)} for demonstration ")
         with st.markdown(
             f"<div style='max-height: 400px; overflow-y: scroll; overflow-x: scroll;'>",
             unsafe_allow_html=True,
         ):
-            st.dataframe(data.head(100))
-        st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ") 
+            st.dataframe(data.head(1000))
+        st.write(f"NOTE : Loading and Showing {min(1000, len(data))} rows out of {len(data)}") 
     else:
         st.write("Error: Invalid CSV file. Please upload a valid CSV file.")
 else:
@@ -46,8 +46,8 @@ else:
         f"<div style='max-height: 400px; overflow-y: scroll; overflow-x: scroll;'>",
         unsafe_allow_html=True,
     ):
-        st.dataframe(data.head(100))
-    st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ")  
+        st.dataframe(data.head(1000))
+    st.write(f"NOTE : Loading and Showing {min(1000, len(data))} rows out of {len(data)} ")  
 
     
 # Methodology selection
