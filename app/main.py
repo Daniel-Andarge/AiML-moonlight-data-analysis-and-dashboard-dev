@@ -7,7 +7,7 @@ from utils import load_data, perform_seasonal_decomposition, perform_box_plot_an
 
 # Set the page title and description
 st.title("Solar Radiation Analysis Dashboard")
-st.write("Welcome to the Solar Radiation Analysis Dashboard. Explore different statistical analysis methodologies and visualize data insights.")
+
 
 # sidebar for user inputs
 st.sidebar.header("Data Upload")
@@ -26,8 +26,14 @@ if uploaded_file is not None:
     # Load the data into a DataFrame
     data = load_data(uploaded_file)
     if data is not None:
-        st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data ")
-        st.dataframe(data)
+        st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data")
+        st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ")
+        with st.markdown(
+            f"<div style='max-height: 400px; overflow-y: scroll; overflow-x: scroll;'>",
+            unsafe_allow_html=True,
+        ):
+            st.dataframe(data.head(100))
+        st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ") 
     else:
         st.write("Error: Invalid CSV file. Please upload a valid CSV file.")
 else:
@@ -35,9 +41,15 @@ else:
     data_folder = os.path.join(os.path.dirname(__file__), 'Data')
     file_path = os.path.join(data_folder, 'cleaned_sierraleon_dataset.csv')
     data = pd.read_csv(file_path)
-    st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data")
-    st.dataframe(data)
+    st.markdown("<h4 style='font-size: 14px;'>Uploaded file contents - Default Cleaned Serra-Leone Data</h4>", unsafe_allow_html=True)
+    with st.markdown(
+        f"<div style='max-height: 400px; overflow-y: scroll; overflow-x: scroll;'>",
+        unsafe_allow_html=True,
+    ):
+        st.dataframe(data.head(100))
+    st.write(f"NOTE : Showing {min(100, len(data))} rows out of {len(data)} for demonstration ")  
 
+    
 # Methodology selection
 if selected_methodology == "Time-Series Analysis":
     # Seasonal Decomposition
@@ -46,11 +58,13 @@ if selected_methodology == "Time-Series Analysis":
     trend, seasonal, residual = perform_seasonal_decomposition(data, period)
 
     # Plot the components
-    st.subheader("Original")
-    st.line_chart(data["GHI"])
-
-    st.subheader("Trend")
-    st.line_chart(trend)
+    st.subheader("Original vs. Trend")
+    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+    axes[0].plot(data.index, data["GHI"])
+    axes[0].set_title("Original")
+    axes[1].plot(data.index, trend)
+    axes[1].set_title("Trend")
+    st.pyplot(fig)
 
     # Auttocorrelation Analysis
     st.subheader("Autocorrelation Analysis")
@@ -71,6 +85,8 @@ if selected_methodology == "Time-Series Analysis":
     plt.title("Moving Averages of Global Horizontal Irradiance (GHI)")
     plt.legend()
     st.pyplot(plt)
+    # Seasonal Decomposition
+
 
 elif selected_methodology == "Box Plot Analysis":
     # Perform box plot analysis
@@ -110,3 +126,7 @@ elif selected_methodology == "Correlation Analysis":
     # Display the correlation coefficient and scatter plot
     st.write("Correlation Coefficient:", correlation)
     st.pyplot(scatter_plot)
+
+# Footer
+st.sidebar.markdown("---")
+st.sidebar.write("Solar Radiation Analysis Dashboard - © 2024 MoonLight Energy Solutions")
