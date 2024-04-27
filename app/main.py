@@ -33,7 +33,7 @@ if uploaded_file is not None:
             unsafe_allow_html=True,
         ):
             st.dataframe(data.head(5000))
-        st.write(f"NOTE : Loading and Showing {min(1000, len(data))} rows out of {len(data)}") 
+        st.write(f"NOTE : Loading and Showing {min(5000, len(data))} rows out of {len(data)}") 
     else:
         st.write("Error: Invalid CSV file. Please upload a valid CSV file.")
 else:
