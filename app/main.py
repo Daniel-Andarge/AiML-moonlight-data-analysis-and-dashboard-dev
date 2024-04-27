@@ -27,7 +27,7 @@ if uploaded_file is not None:
     data = load_data(uploaded_file)
     if data is not None:
         st.subheader("Uploaded file contents - Default Cleaned Serra-Leone Data")
-        st.write(f"NOTE : Loading and Showing {min(5000, len(data))} rows out of {len(data)} ")
+      
         with st.markdown(
             f"<div style='max-height: 400px; overflow-y: scroll; overflow-x: scroll;'>",
             unsafe_allow_html=True,
