@@ -51,7 +51,7 @@ The development process for the MoonLight Energy Solutions project involves two 
 
 During the EDA phase, the following analyses are performed on the solar energy dataset:
 
-[Please Click Here to view the Exploratory-Data-Analysis.ipynb file](https://github.com/Daniel-Andarge/MoonLight/blob/main/Exploratory-Data-Analysis.ipynb).
+[Please Click Here to view the Exploratory-Data-Analysis.ipynb file](https://github.com/Daniel-Andarge/MoonLight/blob/main/notebooks/Exploratory-Data-Analysis.ipynb)
 
 - Summary Statistics: Calculate descriptive statistics such as mean, median, and standard deviation for each numeric column in order to understand the data distribution.
 
