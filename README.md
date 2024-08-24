@@ -1,6 +1,6 @@
-# MoonLight Energy Solutions Project
+# Data-Driven Analysis and Dashboard Integration for Strategic Solar Investment at MoonLight Energy Solutions
 
-This repository contains the code and resources for the MoonLight Energy Solutions project. The project aims to provide a comprehensive analysis of solar energy data and develop a Streamlit dashboard for visualization and exploration. This README file serves as a guide for setting up the project environment and provides an overview of the development process.
+This project focuses on developing a strategic approach for MoonLight Energy Solutions to enhance operational efficiency and sustainability through targeted solar investments. Using data-driven analysis and exploratory data analysis (EDA), the project identifies key environmental trends and high-potential regions for solar installation that align with the company’s long-term sustainability goals. The analysis is supported by a dynamic dashboard that provides real-time insights to guide decision-making and investment strategies.
 
 ## Usage Instructions
 
