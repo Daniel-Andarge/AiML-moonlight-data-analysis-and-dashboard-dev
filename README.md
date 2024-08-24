@@ -20,9 +20,10 @@ This project focuses on developing a strategic approach for MoonLight Energy Sol
 ### Introduction
 The objective is to support MoonLight Energy Solutions in enhancing operational efficiency and sustainability through targeted solar investments. This project presents findings and insights from an Exploratory Data Analysis (EDA) on solar farm data from Benin, Sierra Leone, and Togo. The analysis covers various environmental measurements such as solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed to identify key trends and extract valuable insights. These insights help form a data-driven strategy for pinpointing high-potential regions for solar installation in line with the organization's long-term sustainability goals. Additionally, a dynamic dashboard has been developed to visualize these insights interactively, offering a practical tool for decision-making and strategic planning.
 
-### Data
-- **Sources**: The data for this project are three datasets collected from solar farms in Benin, Sierra Leone, and Togo.
-- **Description**: Each dataset includes measurements of solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed. The dataset has been cleaned to address missing values, duplicates, and other quality issues to ensure reliable analysis.
+### Data Preparation
+
+- **Data Collection**: This project utilizes three datasets gathered from solar farms in Benin, Sierra Leone, and Togo. Each dataset contains measurements of solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed.
+- **Data Preprocessing**: The datasets have been cleaned and transformed to address missing values, remove duplicates, and resolve other quality issues. This preprocessing ensures that the data is reliable and suitable for accurate analysis.
 
 ### Dashboard Development & Deployment
 - **Design and Development**: Created a dashboard using Streamlit to effectively visualize data insights.
