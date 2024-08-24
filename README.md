@@ -21,7 +21,8 @@ This project focuses on developing a strategic approach for MoonLight Energy Sol
 The objective is to support MoonLight Energy Solutions in enhancing operational efficiency and sustainability through targeted solar investments. This project presents findings and insights from an Exploratory Data Analysis (EDA) on solar farm data from Benin, Sierra Leone, and Togo. The analysis covers various environmental measurements such as solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed to identify key trends and extract valuable insights. These insights help form a data-driven strategy for pinpointing high-potential regions for solar installation in line with the organization's long-term sustainability goals. Additionally, a dynamic dashboard has been developed to visualize these insights interactively, offering a practical tool for decision-making and strategic planning.
 
 ### Data
-The data for this project is collected from solar farms in Benin, Sierra Leone, and Togo. It includes measurements of solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed. The dataset has been cleaned to address missing values, duplicates, and other quality issues to ensure reliable analysis.
+- **Sources**: The data for this project are three datasets collected from solar farms in Benin, Sierra Leone, and Togo.
+- **Description**: Each dataset includes measurements of solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed. The dataset has been cleaned to address missing values, duplicates, and other quality issues to ensure reliable analysis.
 
 ### Dashboard Development & Deployment
 - **Design and Development**: Created a dashboard using Streamlit to effectively visualize data insights.
