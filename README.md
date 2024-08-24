@@ -105,9 +105,9 @@ For a detailed analysis, insights, and recommendations, refer to the full projec
 
 Guidelines for contributing to the project, including submitting issues and pull requests.
 
-### License
+## License
 
-This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
 
 ### Contact
 
