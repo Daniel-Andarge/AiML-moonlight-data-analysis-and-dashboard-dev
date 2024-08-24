@@ -105,7 +105,8 @@ For a detailed analysis, insights, and recommendations, refer to the full projec
 
 ### Contributing
 
-Guidelines for contributing to the project, including submitting issues and pull requests.
+While this project is primarily a portfolio piece and not open for external contributions, feedback and suggestions are always welcome. If you have any thoughts or comments, reach out via [email](mailto:andargedaniel90@gmail.com) or [LinkedIn](https://www.linkedin.com/in/danielandarge/).
+
 
 ## License
 
