@@ -1,5 +1,5 @@
 
-# MoonLight Solar Strategy Data Analysis and Dashboard
+# MoonLight Solar Strategy Data Analysis and Dashboard Development
 
 ### Project Description
 This project focuses on developing a strategic approach for MoonLight Energy Solutions to enhance operational efficiency and sustainability through targeted solar investments. Using data-driven analysis and exploratory data analysis (EDA), the project identifies key environmental trends and high-potential regions for solar installation that align with the company’s long-term sustainability goals. The analysis is supported by a dynamic dashboard that provides real-time insights to guide decision-making and investment strategies.
