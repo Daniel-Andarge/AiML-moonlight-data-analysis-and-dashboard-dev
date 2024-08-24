@@ -1,112 +1,123 @@
-# Data Analysis and Dashboard Integration for MoonLight Energy Solutions
 
+# MoonLight Solar Strategy Data Analysis and Dashboard
+
+### Project Description
 This project focuses on developing a strategic approach for MoonLight Energy Solutions to enhance operational efficiency and sustainability through targeted solar investments. Using data-driven analysis and exploratory data analysis (EDA), the project identifies key environmental trends and high-potential regions for solar installation that align with the company’s long-term sustainability goals. The analysis is supported by a dynamic dashboard that provides real-time insights to guide decision-making and investment strategies.
 
-## Usage Instructions
+### Table of Contents
+1. [Introduction](#introduction)
+2. [Data](#data)
+3. [Dashboard Development & Deployment](#dashboard-development--deployment)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Dashboard Screenshots](#dashboard-screenshots)
+7. [Deployed Dashboard URL](#deployed-dashboard-url)
+8. [Project Report](#project-report)
+9. [Contributing](#contributing)
+10. [License](#license)
+11. [Contact](#contact)
 
-To set up the Python environment for this project, follow the steps below:
+### Introduction
+The objective is to support MoonLight Energy Solutions in enhancing operational efficiency and sustainability through targeted solar investments. This project presents findings and insights from an Exploratory Data Analysis (EDA) on solar farm data from Benin, Sierra Leone, and Togo. The analysis covers various environmental measurements such as solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed to identify key trends and extract valuable insights. These insights help form a data-driven strategy for pinpointing high-potential regions for solar installation in line with the organization's long-term sustainability goals. Additionally, a dynamic dashboard has been developed to visualize these insights interactively, offering a practical tool for decision-making and strategic planning.
 
-1. Clone the repository to your local machine:
+### Data
+The data for this project is collected from solar farms in Benin, Sierra Leone, and Togo. It includes measurements of solar radiation, air temperature, relative humidity, barometric pressure, precipitation, and wind speed. The dataset has been cleaned to address missing values, duplicates, and other quality issues to ensure reliable analysis.
 
-   ```
+### Dashboard Development & Deployment
+- **Design and Development**: Created a dashboard using Streamlit to effectively visualize data insights.
+- **Data Integration**: Integrated Python scripts for dynamic data fetching and real-time updates.
+- **Interactive Features**: Implemented interactive elements like sliders and buttons for customizable visualizations.
+- **Deployment**: Deployed the Streamlit dashboard to provide a user-friendly interface for stakeholders.
+
+### Installation
+
+To set up the Python environment for this project, follow these steps:
+
+1. **Clone the Repository**  
+   Clone the repository to your local machine:
+   ```bash
    git clone https://github.com/Daniel-Andarge/MoonLight.git
    ```
 
-2. Navigate to the project directory:
-
-   ```
+2. **Navigate to the Project Directory**  
+   Change to the project directory:
+   ```bash
    cd MoonLight
    ```
 
-3. Create a virtual environment specific to this project. Use the appropriate command for your operating system:
+3. **Create and Activate a Virtual Environment**  
+   Create a virtual environment and activate it using the command appropriate for your operating system:
 
    - **Windows:**
-
-     ```
+     ```bash
      python -m venv venv
      venv\Scripts\activate
      ```
 
    - **Linux and macOS:**
-     ```
+     ```bash
      python3 -m venv venv
      source venv/bin/activate
      ```
 
-4. Install the required packages by running the following command:
-
-   ```
+4. **Install Required Packages**  
+   Install the necessary packages:
+   ```bash
    pip install -r requirements.txt
    ```
 
-5. With the environment set up and packages installed, you can now run the project.
+### Usage
 
-## Development Process
+Once the environment is set up and the packages are installed, run the project locally:
 
-The development process for the MoonLight Energy Solutions project involves two main stages: Exploratory Data Analysis (EDA) and Dashboard Development using Streamlit.
+1. **Start the Streamlit Dashboard**  
+   Navigate to the `app` directory and start the Streamlit dashboard:
+   ```bash
+   cd app
+   streamlit run main.py
+   ```
 
-### 2.1 Exploratory Data Analysis (EDA)
+   This will launch the dashboard, providing an interactive interface for exploring the analyzed data.
 
-###
-
-During the EDA phase, the following analyses are performed on the solar energy dataset:
-
-[Please Click Here to view the Exploratory-Data-Analysis.ipynb file](https://github.com/Daniel-Andarge/MoonLight/blob/main/notebooks/Exploratory-Data-Analysis.ipynb)
-
-- Summary Statistics: Calculate descriptive statistics such as mean, median, and standard deviation for each numeric column in order to understand the data distribution.
-
-- Data Quality Check: Identify missing values, outliers, or incorrect entries in columns such as GHI, DNI, DHI, and others.
-
-- Time Series Analysis: Analyze how variables like GHI, DNI, DHI, and Tamb change over time. Plotting these metrics across the 'Timestamp' can help identify patterns or anomalies.
-
-- Correlation Analysis: Determine the correlation between different variables, such as solar radiation components (GHI, DHI, DNI) and temperature measures (TModA, TModB), to uncover relationships.
-
-- Wind Analysis: Explore wind speed (WS, WSgust, WSstdev) and wind direction (WD, WDstdev) data to identify trends or notable wind events.
-
-- Temperature Analysis: Compare module temperatures (TModA, TModB) with ambient temperature (Tamb) to understand their relationship or variation under different conditions.
-
-- Histograms: Create histograms for variables like GHI, DNI, DHI, WS, and temperatures to visualize their frequency distribution.
-
-- Box Plots: Use box plots to examine the spread and presence of outliers in the solar radiation and temperature data.
-
-- Scatter Plots: Generate scatter plots to explore relationships between pairs of variables, such as GHI vs. Tamb or WS vs. WSgust.
-
-- Data Cleaning: Based on the initial analysis, handle anomalies and missing values, especially in columns like Comments, which may have null values.
-
-### 2.2 Dashboard Development Using Streamlit & Deployment
-
-Streamlit is a powerful Python library used for building interactive web applications. In this project, Streamlit is used to develop a dashboard for visualizing and exploring the solar energy data.
-
-To run the Streamlit dashboard locally, execute the following command in your virtual environment:
-
-```
-cd app
-streamlit run main.py
-```
-
-The dashboard provides an intuitive interface to interact with the analyzed data and gain insights.
-
-### Dashboard ScreenShots:
+### Dashboard Screenshots
 
 **Uploaded File Contents:**
 ![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-1.png)
 
 **Correlation Analysis:**
-![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-2.png)
+![Correlation Analysis](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-2.png)
 
 **Time Series Analysis:**
-![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-3.png)
-
-**Time Series Analysis:**
-![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-4.png)
+![Time Series Analysis](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-3.png)
 
 **Box Plot Analysis:**
-![Dashboard](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-5.png)
+![Box Plot Analysis](https://github.com/Daniel-Andarge/MoonLight/blob/main/assets/Dashboard-5.png)
 
-#### Deployment
+### Deployed Dashboard URL
 
-The deployed version of the Streamlit dashboard can be accessed at [Deployment URL](https://moonlight-fzbyzyewtzif3trwu44hbm.streamlit.app/).
+The deployed version of the Streamlit dashboard can be accessed at: [Deployment URL](https://moonlight-fzbyzyewtzif3trwu44hbm.streamlit.app/).
 
-## Author
+### Project Report
 
-This project was completed by [Daniel Andarge](https://github.com/Daniel-Andarge).
+For a detailed analysis, insights, and recommendations, refer to the full project report: [Download PDF Report](https://drive.google.com/file/d/1arrGGgLoKdpKVyvAYDbwm92yRUO5GPIc/view).
+
+### Contributing
+
+Guidelines for contributing to the project, including submitting issues and pull requests.
+
+### License
+
+This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
+
+### Contact
+
+- **Email**: [Send Message](mailto:andargedaniel90@gmail.com)
+- **LinkedIn**: [Daniel Andarge](https://www.linkedin.com/in/danielandarge/)
+
+### Author
+
+👤 **Daniel Andarge**
+
+---
+
+
